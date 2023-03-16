@@ -1,0 +1,140 @@
+.base-dropdown {
+  position: relative;
+  width: 200px;
+  max-width: 100%;
+  text-align: left;
+  outline: none;
+  height: 40px;
+  &-label {
+    position: absolute;
+    top: -26px;
+    left: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+    &.light {
+      font-weight: normal;
+    }
+  }
+  &-selected {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+    border: 1px solid #EBEBEB;
+    background: #fff;
+    padding: 0 16px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    span {
+      font-size: 16px;
+      color: gray;
+    }
+    > svg {
+      margin-right: 8px;
+    }
+    &:after {
+      content: "";
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      right: 12px;
+      background-image: url(@/assets/icons/icon-arrow-down.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: 0.3s ease;
+    }
+    &.open {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+    &.disabled {
+      opacity: 0.5;
+    }
+    &.dark {
+      color: gray;
+    }
+    &.gray-sm {
+      span {
+        color: gray;
+        opacity: 1;
+      }
+      .base-dropdown__selected-item {
+        //@include limitLine();
+      }
+    }
+  }
+  &.disabled {
+    opacity: 0.5;
+  }
+  &-error {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 8px;
+    color: #c02929;
+  }
+  &-items {
+    max-height: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #EBEBEB;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: 3;
+    transition: 0.3s ease;
+    //@include scrollStyle();
+    &.open {
+      max-height: 200px;
+      visibility: visible;
+      transition: 0.4s ease;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      line-height: 24px;
+      color: gray;
+      padding: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.2s ease;
+      > svg {
+        margin-right: 8px;
+      }
+      &:hover {
+        background-color: rgb(247, 247, 247);
+      }
+    }
+    span {
+      margin-left: 6px;
+    }
+    &.dark {
+      background-color: black;
+      > div {
+        color: #fff;
+        &:hover {
+          background-color: black;
+        }
+      }
+    }
+    &.gray-sm {
+      > div {
+        color: gray;
+        &:hover {
+          color: black;
+          background-color: gray;
+        }
+      }
+    }
+  }
+}
